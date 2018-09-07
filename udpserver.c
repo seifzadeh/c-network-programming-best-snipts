@@ -90,7 +90,7 @@ int main(int argc, char **argv) {
     if (n < 0)
       error("ERROR in recvfrom");
 
-    /* 
+    /*
      * gethostbyaddr: determine who sent the datagram
      */
     hostp = gethostbyaddr((const char *)&clientaddr.sin_addr.s_addr, 
@@ -104,10 +104,10 @@ int main(int argc, char **argv) {
 	   hostp->h_name, hostaddrp);
     printf("server received %d/%d bytes: %s\n", strlen(buf), n, buf);
     
-    /* 
-     * sendto: echo the input back to the client 
+    /*
+     * sendto: echo the input back to the client
      */
-    n = sendto(sockfd, buf, strlen(buf), 0, 
+    n = sendto(sockfd, buf, strlen(buf), 0,
 	       (struct sockaddr *) &clientaddr, clientlen);
     if (n < 0) 
       error("ERROR in sendto");
